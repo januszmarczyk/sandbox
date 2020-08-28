@@ -1,3 +1,6 @@
+#Step 1. Import sandbox/build.gralde
+#Step 2. run 'gradle wrapper' - Please use Gradle 6.3 or later - https://github.com/gradle/gradle/issues/884
+
 #Create distribution
 ./gradlew distZip
 
