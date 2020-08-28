@@ -1,0 +1,11 @@
+# Docker ignore
+.git
+.gradle
+gradle
+.idea
+
+#build
+out
+
+*/build
+*/out

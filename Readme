@@ -1,0 +1,11 @@
+#Create distribution
+./gradlew distZip
+
+#Build docker image
+docker build -t myrepo/sandbox-1.0 .
+
+#run container
+docker run --publish 8000:8080 -ti --detach --name sandbox myrepo/sandbox-1.0:latest
+
+#Detach without exiting shell: CTRL + p or CTRL + q
+
