@@ -67,19 +67,19 @@ bootJar {
 //        new File(docs, 'Readme.txt').write('Read me!')
 //    }
 //}
-
-distributions {
-    main {
-        contents {
-            into('docs'){
-                from createDocs
-            }
-            into('lib') {
-                from project(':app-service').configurations.runtime
-            }
-        }
-    }
-}
+//
+//distributions {
+//    main {
+//        contents {
+//            into('docs'){
+//                from createDocs
+//            }
+//            into('lib') {
+//                from project(':app-service').configurations.runtime
+//            }
+//        }
+//    }
+//}
 //distributions {
 //    main {
 //        contents {
