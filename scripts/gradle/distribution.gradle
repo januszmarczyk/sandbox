@@ -1,0 +1,32 @@
+jar.enabled = false
+distZip.enabled = false
+bootJar.enabled = false
+bootDistZip.enabled = false
+bootDistTar.enabled = false
+distTar.enabled = false
+startScripts.enabled = false
+
+distributions {
+  main {
+    contents {
+      into( '/conf' ) {
+        from 'src/main/resources'
+      }
+    }
+  }
+}
+
+distZip {
+  eachFile { file ->
+    if( file.path.contains( '/lib/' ) ) {
+      String path = file.relativePath
+      file.setPath( path.substring( path.indexOf( "/" ) + 1, path.length() ) )
+    }
+  }
+}
+
+assemble {
+  doLast {
+    delete "${buildDir}/bootScripts"
+  }
+}

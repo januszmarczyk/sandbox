@@ -1,4 +1,4 @@
-package jmarczyk.service;
+package com.jmarczyk.service;
 
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package jmarczyk.controller;
+package com.jmarczyk.controller;
 
-import jmarczyk.service.StatisticsService;
+import com.jmarczyk.service.StatisticsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

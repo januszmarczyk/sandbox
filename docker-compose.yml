@@ -1,11 +1,18 @@
 version: '3.0'
 services:
+  db:
+    image: library/redis:6.0.0
+    ports:
+      - "6379:6379"
+
   app_service:
     build:
       context: app-service
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    depends_on:
+      - db
 
   app_statistics:
     build:
