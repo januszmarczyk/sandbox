@@ -4,7 +4,6 @@ buildscript {
         springBootVersion = "2.3.1.RELEASE"
         lombokVersion = "1.18.12"
         junitVersion = "5.6.2"
-        dockerVersion = "0.25.0"
     }
 
     repositories {
@@ -14,7 +13,6 @@ buildscript {
     dependencies {
         classpath "io.spring.gradle:dependency-management-plugin:${project.dependencyManagementVersion}"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.springBootVersion}"
-        classpath "com.palantir.gradle.docker:gradle-docker:${project.dockerVersion}"
     }
 }
 
@@ -24,9 +22,6 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'com.palantir.docker'
-    apply plugin: 'com.palantir.docker-compose'
-    apply plugin: 'com.palantir.docker-run'
 
     group = 'com.jmarczyk'
     version = '1.0-SNAPSHOT'
@@ -58,80 +53,3 @@ bootJar {
 }
 
 //TODO: create multiproject distribution
-
-//task createDocs {
-//    def docs = file("$buildDir/docs")
-//    outputs.dir docs
-//    doLast {
-//        docs.mkdirs()
-//        new File(docs, 'Readme.txt').write('Read me!')
-//    }
-//}
-//
-//distributions {
-//    main {
-//        contents {
-//            into('docs'){
-//                from createDocs
-//            }
-//            into('lib') {
-//                from project(':app-service').configurations.runtime
-//            }
-//        }
-//    }
-//}
-//distributions {
-//    main {
-//        contents {
-//            into('lib') {
-//                from project(':app-service').configurations.runtime
-//            }
-//        }
-//
-//        contents {
-//            into('bin') {
-//                from {
-//                    project(':app-service').configurations.runtime
-//                }
-//                fileMode = 0755
-//            }
-//            into('lib') {
-//                def libs = []
-//                libs << project(':app-service').configurations.runtime
-//                from libs
-//                from project(':app-service').jar
-//            }
-//        }
-//    }
-//}
-
-//distributions {
-//    main {
-//        baseName = libVersion
-//        contents {
-//            project.subprojects.each { subproject ->
-//                into('lib') {
-//                    from subproject.jar
-//                }
-//                into('src') {
-//                    from subproject.sourcesJar
-//                }
-//                into('doc') {
-//                    from subproject.javadocJar
-//                }
-//            }
-//        }
-//    }
-//}
-
-docker {
-    name 'jmarczyk.com/my-docker:1.0'
-    dockerfile file('Dockerfile')
-
-//    tag 'myRegistry', 'my.registry.com/username/my-app:version'
-//    files tasks.distTar.outputs, 'file1.txt', 'file2.txt'
-//    buildArgs([BUILD_VERSION: 'version'])
-//    labels(['key': 'value'])
-//    pull true
-//    noCache true
-}

@@ -1,9 +1,10 @@
 # Docker ignore
 .git
 .gradle
-gradle
 .idea
+.vagrant
 
+gradle
 #build
 out
 

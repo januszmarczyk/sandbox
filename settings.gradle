@@ -1,6 +1,4 @@
 rootProject.name = 'sandbox'
 
-include 'app-discovery'
 include 'app-service'
-include 'app-statistics'
 include 'app-statistics'
