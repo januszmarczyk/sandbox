@@ -1,8 +1,15 @@
-version: '1.0'
+version: '3.0'
 services:
-  app:
-    build: app-service/build/distributions
+  app_service:
+    build:
+      context: app-service
+      dockerfile: Dockerfile
     ports:
-      - "5000:5000"
-volumes:
-#  logvolume01: {}
+      - "8080:8080"
+
+  app_statistics:
+    build:
+      context: app-statistics
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8090"

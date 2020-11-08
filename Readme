@@ -2,31 +2,3 @@
 Step 1. Import sandbox/build.gradle
 Step 2. IntelliJ -> right click to sandbox/build.gradle -> import project gradle
 Step 3. Build project: ./gradlew clean build
-
-#Create distribution
-./gradlew distZip
-
-#Build docker image
-docker build -t myrepo/sandbox-1.0 .
-
-#run container
-docker run --publish 8000:8080 -ti --detach --name sandbox myrepo/sandbox-1.0:latest
-
-#Detach without exiting shell: CTRL + p or CTRL + q
-
-#Vagrant:
--Install VirtualBox
--Install Vagrant
--Disable hyper-v and containers features in Win10 settings
--Download ubuntu 20.10 iso:
-curl -XGET -o ubuntu-20.10-desktop-amd64 "https://releases.ubuntu.com/20.10/ubuntu-20.10-desktop-amd64.iso?_ga=2.160922493.1994579395.1604234693-737317042.1604234693"
-
-#Vagrant commands:
--Start VM:
-vagrant up
--Stop VM:
-vagrant halt
--Reload VM:
-vagrant reload
--Reload VM and provisions:
-vagrant reload --provision
