@@ -4,6 +4,7 @@ buildscript {
     springBootVersion = "2.3.5.RELEASE"
     lombokVersion = "1.18.12"
     junitVersion = "5.6.2"
+    dockerComposePluginVersion = "0.25.0"
   }
 
   repositories {
@@ -13,6 +14,7 @@ buildscript {
   dependencies {
     classpath "io.spring.gradle:dependency-management-plugin:${project.dependencyManagementVersion}"
     classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.springBootVersion}"
+    classpath "com.palantir.gradle.docker:gradle-docker:${project.dockerComposePluginVersion}"
   }
 }
 
@@ -22,6 +24,7 @@ allprojects {
   apply plugin: 'application'
   apply plugin: 'org.springframework.boot'
   apply plugin: 'io.spring.dependency-management'
+  apply plugin: 'com.palantir.docker-compose'
   apply from: "${rootDir}/scripts/gradle/distribution.gradle"
 
   group = 'com.com.jmarczyk'
@@ -31,6 +34,10 @@ allprojects {
   repositories {
     jcenter()
   }
+
+  dockerCompose.dockerComposeFile "${rootDir}/docker-compose.yml"
+  tasks.dockerComposeUp.dependsOn('installDist')
+  tasks.assemble.dependsOn('installDist')
 }
 
 subprojects {

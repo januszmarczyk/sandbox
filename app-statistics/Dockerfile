@@ -1,6 +1,9 @@
-FROM openjdk:11
-WORKDIR /app
+FROM openjdk:11-jre-slim
+
+WORKDIR /opt
 EXPOSE 8090
-ARG JAR_FILE=/build/distributions/app-statistics-1.0-SNAPSHOT/lib/*.jar
-COPY ${JAR_FILE} /app/lib/
-ENTRYPOINT ["java","-jar","/app/lib/app-statistics-1.0-SNAPSHOT.jar"]
+
+COPY build/install/app-statistics /opt
+COPY entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh", "app-statistics-1.0-SNAPSHOT.jar"]
