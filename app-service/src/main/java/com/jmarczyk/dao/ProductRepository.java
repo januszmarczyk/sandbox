@@ -1,8 +1,9 @@
 package com.jmarczyk.dao;
 
-import com.jmarczyk.data.Product;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.jmarczyk.data.Product;
+
 @Repository
-public interface ProductRepository extends CrudRepository<Product, String> {}
+public interface ProductRepository extends ReactiveCrudRepository<Product, String> {}

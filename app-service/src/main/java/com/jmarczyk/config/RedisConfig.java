@@ -22,7 +22,7 @@ public class RedisConfig {
 
   @Bean
   @Primary
-  public ReactiveRedisConnectionFactory redisConnectionFactory() {
+  public ReactiveRedisConnectionFactory createRedisConnectionFactory() {
     // TODO
     //    on the same machine UNIX socket can be reused
     //    configure permissions: which user can access socket,

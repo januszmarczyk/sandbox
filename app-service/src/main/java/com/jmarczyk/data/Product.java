@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RedisHash
+@RedisHash("Product")
 public class Product {
   private String id;
   private String name;
