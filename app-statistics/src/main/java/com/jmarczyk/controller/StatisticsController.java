@@ -24,4 +24,10 @@ public class StatisticsController
     log.info( "Stats incremented" );
     return Mono.empty();
   }
+
+  @GetMapping(path = "test", produces = MediaType.APPLICATION_JSON_VALUE)
+  public Mono<String> returnXD() {
+    log.info( "XD returned" );
+    return Mono.just( "XD" );
+  }
 }
